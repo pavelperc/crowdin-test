@@ -1,6 +1,5 @@
 <resources>
-    <string name="app_name">crowdin-test</string>
-    <string name="string1">string 1</string>
-    <string name="string2">string 2</string>
-    <string name="string3">string 3</string>
+    <string name="string1">строка 1</string>
+    <string name="string2">строка 2</string>
+    <string name="string3">строка 3</string>
 </resources>
