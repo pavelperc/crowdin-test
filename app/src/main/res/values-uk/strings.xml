@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">crowdin-test</string>
+    <string name="string1">рядок 1</string>
+    <string name="string2">рядок 2</string>
+    <string name="string3">рядок 3</string>
+</resources>
