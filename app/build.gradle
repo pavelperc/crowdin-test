@@ -15,7 +15,7 @@ android {
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
 
-        resConfigs "ru", "en", "uk"
+        resConfigs "ru", "en", "uk", "fr"
     }
 
     buildTypes {
