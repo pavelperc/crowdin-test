@@ -4,10 +4,10 @@
 
 В crowdin созданы два проекта:
 
-* `bookmate-test`:
+* [bookmate-test](https://crowdin.com/project/bookmate-test):
   * Исходники на русском (`ru`)
   * Переводы на `en`, `uk`
-* `bookmate-test-en`:
+* [bookmate-test-en](https://crowdin.com/project/bookmate-test-en):
   * Исходники на английском (`en`)
   * Перевод на `fr`
 
