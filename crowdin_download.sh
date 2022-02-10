@@ -14,7 +14,7 @@ rm build/crowdin-status-en.tmp
 if cmp -s build/crowdin-status.txt build/crowdin-status.tmp && [ "$1" != "-f" ]; then
   rm build/crowdin-status.tmp
   echo "No changes in crowdin status, skip. Use -f for force download."
-  exit 1
+  exit 0
 fi
 
 echo "Downloading russian sources and translations"

@@ -16,3 +16,29 @@ buildscript {
 task clean(type: Delete) {
     delete rootProject.buildDir
 }
+
+task crowdinDownload(type: Exec) {
+    group = "crowdin"
+    commandLine 'bash', 'crowdin_download.sh'
+}
+
+task crowdinDownloadRelease(type: Exec) {
+    group = "crowdin"
+    commandLine 'bash', 'crowdin_download_release.sh'
+}
+
+task crowdinRemoveAll(type: Exec) {
+    group = "crowdin"
+    commandLine 'bash', 'crowdin_remove_all.sh'
+}
+
+task crowdinUpload(type: Exec) {
+    group = "crowdin"
+    commandLine 'bash', 'crowdin_upload.sh'
+}
+
+task crowdinSync(type: Exec) {
+    group = "crowdin"
+    commandLine 'bash', 'crowdin_sync.sh'
+}
+
