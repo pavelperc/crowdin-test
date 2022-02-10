@@ -2,8 +2,6 @@
 
 set -e
 
-#### status check time:	0m5.561s (maybe disable?)
-
 echo "Fetching crowdin status"
 crowdin status -v -c crowdin-ru.yml --no-progress > .crowdin-status.txt.tmp &
 crowdin status -v -c crowdin-en.yml --no-progress > .crowdin-status-en.txt.tmp &
@@ -18,13 +16,13 @@ if cmp -s .crowdin-status.txt .crowdin-status.txt.tmp && [ "$1" != "-f" ]; then
   exit 1
 fi
 
-### parallel download time: 0m7.956s, in bookmate: 0m8.946s
-
-echo "Downloading all in parallel"
+echo "Downloading russian sources and translations"
 crowdin download sources -c crowdin-ru.yml --no-progress &
 crowdin download -c crowdin-ru.yml --no-progress &
-crowdin download -c crowdin-en.yml --no-progress &
 wait
+# english translations require english sources from russian project, so can not run in parallel.
+echo "Downloading english translations"
+crowdin download -c crowdin-en.yml --no-progress
 
 echo "Caching crowdin status"
 mv .crowdin-status.txt.tmp .crowdin-status.txt
