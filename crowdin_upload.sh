@@ -10,10 +10,16 @@ do
   mv "$src" "${src}.tmp"
 done
 
-set -e
 echo "Downloading recent sources"
 crowdin download sources -c crowdin-ru.yml --no-progress
-set +e
+if [ $? -ne 0 ];
+then
+    for src in "${sources[@]}"
+    do
+      mv "${src}.tmp" "$src"
+    done
+    exit 1
+fi
 
 echo "Calculating diff"
 deleted_lines=""
@@ -49,4 +55,3 @@ fi
 set -e
 echo "Uploading sources"
 crowdin upload sources -c crowdin-ru.yml --no-progress
-set +e
