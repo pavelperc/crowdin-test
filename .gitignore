@@ -8,7 +8,6 @@
 .externalNativeBuild
 .cxx
 local.properties
-.crowdin-status.txt
 
 app/src/main/res/values*/strings.xml
 module/src/main/res/values*/strings.xml

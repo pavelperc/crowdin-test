@@ -3,15 +3,16 @@
 set -e
 
 echo "Fetching crowdin status"
-crowdin status -v -c crowdin-ru.yml --no-progress > .crowdin-status.txt.tmp &
-crowdin status -v -c crowdin-en.yml --no-progress > .crowdin-status-en.txt.tmp &
+mkdir -p build
+crowdin status -v -c crowdin-ru.yml --no-progress > build/crowdin-status.tmp &
+crowdin status -v -c crowdin-en.yml --no-progress > build/crowdin-status-en.tmp &
 wait
 
-cat .crowdin-status-en.txt.tmp >> .crowdin-status.txt.tmp
-rm .crowdin-status-en.txt.tmp
+cat build/crowdin-status-en.tmp >> build/crowdin-status.tmp
+rm build/crowdin-status-en.tmp
 
-if cmp -s .crowdin-status.txt .crowdin-status.txt.tmp && [ "$1" != "-f" ]; then
-  rm .crowdin-status.txt.tmp
+if cmp -s build/crowdin-status.txt build/crowdin-status.tmp && [ "$1" != "-f" ]; then
+  rm build/crowdin-status.tmp
   echo "No changes in crowdin status, skip. Use -f for force download."
   exit 1
 fi
@@ -25,5 +26,5 @@ echo "Downloading english translations"
 crowdin download -c crowdin-en.yml --no-progress
 
 echo "Caching crowdin status"
-mv .crowdin-status.txt.tmp .crowdin-status.txt
+mv build/crowdin-status.tmp build/crowdin-status.txt
 
