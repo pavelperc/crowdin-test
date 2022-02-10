@@ -18,6 +18,7 @@ task clean(type: Delete) {
 }
 
 task crowdinDownload(type: Exec) {
+    enabled = !gradle.startParameter.offline
     group = "crowdin"
     commandLine 'bash', 'crowdin_download.sh'
 }
