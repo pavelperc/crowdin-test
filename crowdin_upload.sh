@@ -1,5 +1,6 @@
 #!/bin/bash
 
+# todo, add src for module
 src="app/src/main/res/values/strings.xml"
 src_tmp="app/src/main/res/values/strings.xml.tmp"
 

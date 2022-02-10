@@ -8,3 +8,4 @@ dependencyResolutionManagement {
 }
 rootProject.name = "crowdin-test"
 include ':app'
+include ':module'
