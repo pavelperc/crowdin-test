@@ -22,10 +22,19 @@ task crowdinDownload(type: Exec) {
     commandLine 'bash', 'crowdin_download.sh'
 }
 
+// for debug and QA builds
+tasks.findByPath(":app:processDebugResources")?.dependsOn(crowdinDownload)
+tasks.findByPath(":module:processDebugResources")?.dependsOn(crowdinDownload)
+
+
 task crowdinDownloadRelease(type: Exec) {
     group = "crowdin"
     commandLine 'bash', 'crowdin_download_release.sh'
 }
+
+// for release builds
+tasks.findByPath(":app:processReleaseResources")?.dependsOn(crowdinDownloadRelease)
+tasks.findByPath(":module:processReleaseResources")?.dependsOn(crowdinDownloadRelease)
 
 task crowdinRemoveAll(type: Exec) {
     group = "crowdin"
